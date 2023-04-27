@@ -1,27 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-import { Invitation } from './invitation/invitation';
-function App() {
-  return (
-    <div className="App">
+import React, { useState } from 'react'
+import './App.css'
 
-      < Invitation party ="Birthday party Invitation"
-      email = "jaGdish@gmail.com"
-  hey = "jaGdish" 
-  birthday = "birthday party"
-  names ="Ritu , Saurabh , Kartik"
-  address = "Green field Avenue"
-  from = "JaGdish"
-      />
+const App = () => {
 
+const [name, setName] = useState("");
+const [fullName, setFullName] = useState();
 
+const inputEvent = (event) => {
+    console.log(event.target.value);
+    setName(event.target.value);
+};
 
+const onSubmit = () => {
+    setFullName(name);
+};
 
-    
-  
-       
-    </div>
-  );
+return(
+
+    <>
+        <div>
+            <h1>Hii, My name is : {fullName} </h1>
+            <input 
+            type = 'text'
+            placeHolder = 'Enter Your name'
+            onChange = {inputEvent}
+            value = {name}
+            />
+            <button onClick = {onSubmit}>Submit</button>
+        </div>
+    </>
+)
 }
+
+
 
 export default App;
